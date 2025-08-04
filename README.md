@@ -107,5 +107,3 @@ The full LaTeX report is available in the `/Report` folder. It includes:
 ##  Author
 
 **Tatyana Amugo**  
-Capstone Project, Department of Computer Science  
-University of [Insert Name]
