@@ -1,83 +1,111 @@
-# anomal-y
+# 🎥 Anomal-y: A Comparative Study in Video Surveillance Anomaly Detection
 
-## A Comparative Study using PaDiM, SPADE, and CLIP
+> **Streamlit Demo:** [anomal-y-detection.streamlit.app](https://anomal-y-detection.streamlit.app)
 
-## Overview
-This project investigates anomaly detection in video surveillance by comparing three distinct approaches:
+---
 
-**PaDiM** – Patch distribution modeling using statistical distances
+##  Overview
 
-**SPADE** – Gradient-based visual attention using Grad-CAM
+This project explores anomaly detection in surveillance video through **three distinct model paradigms**:
 
-**CLIP** – Semantic similarity via multimodal language-image embeddings
+- **PaDiM** — Patch Distribution Modeling (Statistical outlier detection using multivariate Gaussians)
+- **SPADE** — Gradient-based Visual Attention (Analyzing Grad-CAM activation differences)
+- **CLIP** — Semantic Similarity (Language-image embeddings via vision-language models)
 
-The models are evaluated on the ShanghaiTech Campus dataset. The final deliverables include a LaTeX report, visual analysis, and a demo via a Streamlit app.
+Using the **ShanghaiTech Campus dataset**, we extract image frames and compare the models using ROC-AUC, score distribution, and visual heatmaps. The full evaluation is available in a LaTeX report and a live interactive demo.
 
-## Dataset
-The project uses the ShanghaiTech Campus video dataset. To adapt for image-based models:
+---
 
-Frames were extracted using OpenCV
+##  Dataset
 
-Ground truth masks were used to label normal vs abnormal images
+The project is based on the **ShanghaiTech Campus** surveillance video dataset, which features real-world campus scenes with labeled anomalies like:
 
-A balanced sample of 8,000 frames was used (4,000 per class)
+- Bicycles in pedestrian areas  
+- Sudden crowding  
+- Unusual object motion
 
-**Note:** The dataset is not included in the repo due to size. Please download it separately and follow the extraction instructions in /data/README.md.
+**Preprocessing steps:**
 
-# Models and Methods
-**PaDiM**
-Uses multivariate Gaussian modeling on ResNet features
+- Extracted ~275,000 frames using OpenCV  
+- Applied ground-truth masks to label normal vs abnormal  
+- Sampled a balanced dataset of **8,000 frames** (4,000 normal, 4,000 abnormal)  
 
-Detects statistical outliers in patch distributions
+📌 **Note:** Due to dataset size, data is not included in the repository. See `data/README.md` for extraction scripts and setup.
 
-**SPADE**
-Generates Grad-CAMs for each image
+---
 
-Anomaly is defined as deviation from average attention map
+## 🧪 Models & Methodologies
 
-**CLIP**
-Embeds images into semantic space
+###  PaDiM
 
-Compares against prototype clusters using cosine similarity and distance metrics
+- Backbone: ResNet-18  
+- Models spatial patch distributions using multivariate Gaussians  
+- Detects statistically anomalous patches  
 
-# Results
-Model	ROC-AUC
-**PaDiM	0.603**
+###  SPADE
 
-**SPADE	0.509**
+- Computes Grad-CAM visualizations from ResNet  
+- Averages normal CAMs to form a reference  
+- Detects anomalies via SSIM deviation from normal attention  
 
-**CLIP	0.797**
+###  CLIP
 
-Visualizations and detailed plots are available in the figures/ folder and in the LaTeX report.
+- Uses OpenAI’s CLIP (ViT-B/32) to embed image semantics  
+- Prototypes generated via K-Means  
+- Measures similarity via cosine and Euclidean metrics  
 
-## Run the Streamlit App
-To demo the project visually:
+---
+
+##  Results
+
+| Model | ROC-AUC Score |
+|-------|----------------|
+| **PaDiM** | 0.603 |
+| **SPADE** | 0.509 |
+| **CLIP** | **0.797** |
+
+ Visualizations (ROC curves, score distributions, and Grad-CAM heatmaps) can be found in `figures/` and the LaTeX report.
+
+---
+
+## 🚀 Try the Streamlit App
+
+To launch the demo locally:
+
+```bash
+git clone https://github.com/cheredi/anomal-y.git
+cd anomal-y
 pip install -r requirements.txt
 streamlit run app/app.py
+```
 
-# Report
-The full LaTeX report is included in /report. It includes:
+Or use the hosted app: [anomal-y-detection.streamlit.app](https://anomal-y-detection.streamlit.app)
 
-Dataset overview
+---
 
-Methodology
+## 📄 Report
 
-Model implementation
+The full LaTeX report is available in the `/Report` folder. It includes:
 
-ROC curves, score distributions, and heatmaps
+- Dataset overview and extraction methodology  
+- Detailed model architectures  
+- Experimental results and visualizations  
+- Comparative insights and limitations  
+- Future directions  
 
-Comparative evaluation
+---
 
-Future work suggestions
+##  Future Work
 
-# Future Directions
-Add temporal modeling (I3D, Transformers, or optical flow)
+- Incorporate **temporal modeling** (e.g., I3D, Transformers, Optical Flow)  
+- Use **multimodal fusion** (visual + semantic + motion)  
+- Integrate **segmentation and audio cues**  
+- Explore **real-time deployment** on edge devices  
 
-Fuse statistical, visual, and semantic models into a hybrid system
+---
 
-Incorporate additional modalities like audio
+##  Author
 
-Explore real-time deployment strategies
-
-### Author
-**Tatyana Amugo**
+**Tatyana Amugo**  
+Capstone Project, Department of Computer Science  
+University of [Insert Name]
