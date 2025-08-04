@@ -30,7 +30,7 @@ The project is based on the **ShanghaiTech Campus** surveillance video dataset, 
 - Applied ground-truth masks to label normal vs abnormal  
 - Sampled a balanced dataset of **8,000 frames** (4,000 normal, 4,000 abnormal)  
 
-📌 **Note:** Due to dataset size, data is not included in the repository. See `data/README.md` for extraction scripts and setup.
+📌 **Note:** Due to dataset size, data is not included in the repository.
 
 ---
 
