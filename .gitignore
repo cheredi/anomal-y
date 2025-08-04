@@ -10,6 +10,6 @@ __pycache__/
 
 # Ignore demo images if you want
 # demo/
-
+cd
 # Ignore numpy score files if you want
 # npy_scores/
