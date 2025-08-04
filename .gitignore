@@ -1,0 +1,15 @@
+# Ignore macOS system files
+.DS_Store
+
+# Python cache files
+__pycache__/
+*.pyc
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore demo images if you want
+# demo/
+cd
+# Ignore numpy score files if you want
+# npy_scores/
