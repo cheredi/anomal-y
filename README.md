@@ -43,7 +43,9 @@ Compares against prototype clusters using cosine similarity and distance metrics
 # Results
 Model	ROC-AUC
 **PaDiM	0.603**
+
 **SPADE	0.509**
+
 **CLIP	0.797**
 
 Visualizations and detailed plots are available in the figures/ folder and in the LaTeX report.
@@ -68,7 +70,7 @@ Comparative evaluation
 
 Future work suggestions
 
-# Future Directions
+# Future Directions
 Add temporal modeling (I3D, Transformers, or optical flow)
 
 Fuse statistical, visual, and semantic models into a hybrid system
@@ -77,5 +79,5 @@ Incorporate additional modalities like audio
 
 Explore real-time deployment strategies
 
-### Author
+### Author
 **Tatyana Amugo**
